@@ -1,0 +1,8 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile.rustlings
+    stdin_open: true
+    tty: true

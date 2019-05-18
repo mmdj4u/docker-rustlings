@@ -1,0 +1,13 @@
+from ubuntu:latest
+
+RUN apt-get update
+RUN apt-get -y install git-core cargo nano
+
+WORKDIR /app
+RUN git clone https://github.com/rust-lang/rustlings
+WORKDIR /app/rustlings
+RUN git checkout $(git describe --tags)
+RUN cargo install --force --path .
+RUN echo 'PATH=$PATH:/root/.cargo/bin' > /root/.bashrc
+
+ENTRYPOINT bash
